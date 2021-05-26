@@ -10,7 +10,28 @@
 // Read Sprockets README (https://github.com/rails/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
+//= require jquery_ujs
+//= require popper
+//= require bootstrap-sprockets
+
+//= require jquery
+
 //= require rails-ujs
 //= require activestorage
 //= require turbolinks
 //= require_tree .
+
+
+// ドロップダウンメニュー
+$(function(){
+  $('.dropdown-btn').hover(
+  function() {
+    //カーソルが重なった時
+    $(this).children('.dropdown').addClass('open');
+  }, function() {
+    //カーソルが離れた時
+    $(this).children('.dropdown').removeClass('open');
+  });
+});
+ 

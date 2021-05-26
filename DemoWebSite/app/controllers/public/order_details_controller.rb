@@ -1,2 +1,2 @@
-class OrderDetailsController < ApplicationController
+class Public::OrderDetailsController < ApplicationController
 end
