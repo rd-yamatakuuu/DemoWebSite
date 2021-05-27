@@ -1,19 +1,22 @@
-<div class='containter'>
-  <nav class="globalnav-wrap">
-    <ul class="globalnav menuitem">
-      <li class='menu-font'>Home</li>
-      <li class='menu-font'>Product</li>
-      <li class='menu-font'>About</li>
-      <li class='menu-font'>Support</li>
-      <li class="dropdown-btn position-relative">
-        <i class="fas fa-shopping-cart fa-lg position-absolute top-50 start-50 translate-middle"></i>
-        <ul class="dropdown">
-          <li><a href="#">ドロップダウンメニュー</a></li>
-          <li><a href="#">ドロップダウンメニュー</a></li>
-          <li><a href="#">ドロップダウンメニュー</a></li>
-          <li><a href="#">ドロップダウンメニュー</a></li>
+<nav class='navbar navbar-expand-lg p-0 navbar-dark bg-dark'>
+  <div class='container-fluid'>
+    <div class='row mx-auto'>
+      <p class='navbar-brand'><%= link_to 'Art Descovery', root_path, class:'text-light underline', :style => 'text-decoration:none;' %></p>
+    </div>
+  </div>
+</nav>
+<nav class='navbar navbar-expand-lg navbar-dark bg-dark'>
+  <div class='container'>
+    <div class='row mx-auto'>
+      <div class='navbar-collapse collapse show'>
+        <ul class='navbar-nav'>
+          <li class='fas nav-link navitem'><%= link_to 'Home', root_path, class:'text-light underline',:style => 'text-decoration:none;' %></li>
+          <li class='fas nav-link navitem'><%= link_to 'Painting', items_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
+          <li class='fas nav-link navitem'><%= link_to 'About', home_about_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
+          <li class='fas nav-link navitem'><%= link_to 'Shopping', cart_item_path(current_customer), class:'text-light underline', :style => 'text-decoration:none;' %></li>
+          <li class='fas nav-link navitem'><%= link_to '', customers_path, class:'text-light fas fa-user underline', :style => 'text-decoration:none;' %></li>
         </ul>
-      </li>
-    </ul>
-  </nav>
-</div>
+      </div>
+    </div>
+  </div>
+</nav>

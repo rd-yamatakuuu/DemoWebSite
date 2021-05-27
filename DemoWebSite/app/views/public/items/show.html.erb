@@ -1,2 +1,45 @@
-<h1>Items#show</h1>
-<p>Find me in app/views/items/show.html.erb</p>
+<% if @cart_items.empty? %>
+  <div><h2>Nothing at all</h2></div>
+<% else %>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-5'>
+      <%= attachment_image_tag(@item, :image, height: '400', fallback: 'no_image.jpg') %>
+    </div>
+    <div class='col-md-5 offset-md-2'>
+      <table class='table table-borderless'>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th><%= @item.name %></th>
+          </tr>
+          <tr>
+            <th>About</th>
+            <th><%= @item.introduction %></th>
+          </tr>
+          <tr>
+            <th>Value</th>
+            <th><%= tax_price(@item.price) %> yen</th>
+          </tr>
+          <tr>
+            <th>Stock</th>
+            <% if @item.is_active == true %>
+              <th>available</th>
+            <% else %>
+              <th>unavailable</th>
+            <% end %>
+          </tr>
+        </tbody>
+      </table>
+      <div class='center'>
+        <%= form_with model: @cart_item, url: cart_items_path, local: true do |f| %>
+          <%= f.hidden_field :item_id, value:@item.id %>
+            <%= f.select :amount, (1..3).each{|n| n}, include_blank: 'amount' %>
+      </div>
+      <div class='center button-position'>
+          <%= f.submit 'Add to Cart', class:'btn btn-outline-dark' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -13,66 +13,73 @@
  *= require_tree .
  *= require_self
  */
- 
+
 @import "bootstrap";
 @import 'font-awesome-sprockets';
 @import 'font-awesome';
- 
 
+body {
+  font-family: 'Vollkorn', serif;
+  letter-spacing: 3px;
+}
 header {
-  width: 100%;
-  margin: 0 auto;
+  font-family: 'Vollkorn', serif;
+  letter-spacing: 3px;
 }
-.menuitem {
- list-style: none;
- display: flex;
- justify-content: center;
- padding: 20px;
+.container {
+  margin-top: 30px;
 }
-.menu-font {
- font-size: 24px;
- margin-right: 15px;
+.center {
+  display: flex;
+  justify-content: center;
 }
-.globalnav-wrap {
-  font-size:16px;
-  color:#fff;
-  background:#333;
-  display:flex;
-  justify-content: center; 
+.button-position {
+  margin-top: 50px;
 }
-.globalnav {
-  .dropdown-btn {
-    position:relative;
-    display:inline-block;
-    cursor:pointer;
-    &:hover {
-      background:#666;
-    }
-  }
-  .dropdown {
-    z-index:1000;
-    background:#666;
-    position:absolute;
-    left:0;
-    top:55px;
-    width:200px;
-    padding:10px 20px;
-    display:none;
-    li {
-      display:inline-block;
-      margin:10px 0;
-      a {
-        color:#fff;
-      }
-    }
-  }
-  .nav-button-wrap,
-  .open {
-    display:block;
-  }
-  .close {
-    display:block;
-  }
+.title-position {
+    margin-top: 20px;
 }
 
+// 登録者ページItem#new
+.inputframe {
+    border: none;
+}
+.newitem {
+    input {
+        border: none;
+        outline: none;
+        border-bottom: solid;
+        background-color: transparent;
+    }
+    .length {
+        width: 400px;
+    }
+}
 
+.navitem {
+ margin-right: 60px;
+ text-decoration: none;
+}
+
+.underline {
+    text-decoration: none;
+    text-color: black;
+    font-family: 'Vollkorn', serif;
+}
+
+.bodydesign {
+
+  tr:nth-child(2n) {
+    background-color: #dcdcdc;
+  }
+
+  tr {
+    text-align: center;
+  }
+  th {
+    text-align: center;
+  }
+
+}
+
+// Itemnのshowページ
