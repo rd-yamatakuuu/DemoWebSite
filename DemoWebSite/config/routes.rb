@@ -18,7 +18,11 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :customers, only: [:index, :show, :edit, :update, :create]
     resources :items, only: [:index, :show]
-    resources :orders, only: [:show, :create, :update, :destroy]
+    resources :orders, only: [:index, :new, :create, :update, :destroy] do
+      collection do
+        post 'confirm'
+      end
+    end
     resources :order_details, only: [:show]
     resources :cart_items, only: [:index, :show, :create, :update, :destroy] do
       collection do

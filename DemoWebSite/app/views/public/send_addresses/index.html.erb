@@ -1,2 +1,52 @@
-<h1>SendAddresses#index</h1>
-<p>Find me in app/views/send_addresses/index.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <h2>Registered Address</h2>
+  </div>
+  <div class='row'>
+    <div class='col-md-9 offset-md-2 newitem'>
+      <%= form_with model:@send_address, local: true do |f| %>
+        <div class='form-group'>
+          <label for='inputPostalCode'>Postal Code</label><br>
+          <%= f.text_field :postal_code, autofocus: true, id:'inputPostalCode' %>
+        </div>
+        <div class='form-group'>
+          <label for='inputAddress'>Address</label><br>
+          <%= f.text_field :address, autofocus: true, id:'inputAddress', :size =>'60' %>
+        </div>
+        <div class='form-group'>
+          <label for='inputAddressName'>Name</label><br>
+          <%= f.text_field :name, autofocus: true, id:'inputAddressName' %>
+        </div>
+        <div>
+          <%= f.submit 'Submit', class:'btn btn-outline-dark' %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
+<div class='container'>
+  <div class='row col-md-10'>
+    <table class='table bodydesign'>
+      <thead>
+        <tr>
+          <th class='text-white bg-dark'>Postal Code</th>
+          <th class='text-white bg-dark'>Address</th>
+          <th class='text-white bg-dark'>Name</th>
+          <th class='text-white bg-dark'></th>
+          <th class='text-white bg-dark'></th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @send_addresses.each do |send_address| %>
+          <tr>
+            <th><%= send_address.postal_code %></th>
+            <th><%= send_address.address %></th>
+            <th><%= send_address.name %></th>
+            <th><%= link_to 'Edit', edit_send_address_path(send_address), class:'btn btn-sm btn-dark' %></th>
+            <th><%= link_to 'Destroy', send_address_path(send_address), method: :delete, class:'btn btn-sm btn-danger' %></th>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

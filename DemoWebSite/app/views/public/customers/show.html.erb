@@ -1,2 +1,53 @@
-<h1>Customers#show</h1>
-<p>Find me in app/views/customers/show.html.erb</p>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-3 offset-md-9'>
+      <h3><%= link_to 'Log out', destroy_customer_session_path, method: :delete, class:'btn btn-lg btn-dark' %></h3>
+    </div>
+  </div>
+  <div class='row'>
+    <h2>
+      Your Infomation ( <%= link_to 'Edit', edit_customer_path(@customer), class:'btn btn-sm btn-outline-dark' %> )
+    </h2>
+  </div>
+  <div class='row'>
+    <div class='col-md-8'>
+      <table class='table table-borderless'>
+        <tbody>
+          <tr>
+            <th>Name</th>
+            <th><%= @customer.last_name + ' ' + @customer.first_name %></th>
+          </tr>
+          <tr>
+            <th>Kana</th>
+            <th><%= @customer.kana_last_name + ' ' + @customer.kana_first_name %></th>
+          </tr>
+          <tr>
+            <th>Address</th>
+            <th>
+              <%= @customer.postal_code %><br>
+              <%= @customer.address %>
+            </th>
+          </tr>
+          <tr>
+            <th>Telephone</th>
+            <th><%= @customer.telephone %></th>
+          </tr>
+          <tr>
+            <th>Email</th>
+            <th><%= @customer.email %></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class='row'>
+    <div>
+      <%= link_to 'Other Address', send_addresses_path, class:'btn btn-outline-dark' %>
+    </div>
+  </div>
+  <div class='row'>
+    <div>
+      <%= link_to 'Order History', orders_path, class:'btn btn-outline-dark' %>
+    </div>
+  </div>
+</div>
