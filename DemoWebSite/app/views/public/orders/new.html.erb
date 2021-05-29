@@ -1,1 +1,66 @@
-<h1>111</h1>
+<div class='container'>
+  <div class='row'>
+    <div class='col-md-7 offset-md-1'>
+      <h2>Order Information</h2>
+    </div>
+  </div>
+  <%= form_with model:@order, url:'comfirm_orders_path', local: true do |f| %>
+    <div class='row'>
+      <div class='col-md-3'>
+        <h4>Payment Method</h4>
+      </div>
+      <div>
+        <div>
+          <%= f.radio_button :payment_method, :credit_card, checked: true %>
+          <%= f.label :credit_card %>
+          <%= f.radio_button :payment_method, :bank_transfer %>
+          <%= f.label :bank_transfer %>
+        </div>
+      </div>
+    </div>
+    <div class='row'>
+      <div class='col-md-3'>
+        <h4>Send Address</h4>
+      </div>
+      <div>
+        <div>
+          <%= f.radio_button :address_option, 0, checked: true %>
+          <%= f.label :address_option, 'your address', value: 0 %>
+          <div class='title-position'>
+            &emsp;<%= '〒' + @customer.postal_code + ' ' + @customer.address %><br>
+            &emsp;<%= @customer.last_name + @customer.first_name %>
+          </div>
+        </div>
+        <div class='title-position'>
+          <%= f.radio_button :address_option, 1 %>
+          <%= f.label :address_option, 'Select other address', value: 1 %><br>
+          &emsp;<%= f.select :send_address_id, @send_addresses.map { |send_address| [send_address.postal_code + ' ' + send_address.address + ' ' + send_address.name, send_address.id]}, {prompt: 'Select'} %>
+        </div>
+        <div>
+          <div class='title-position'>
+            <%= f.radio_button :address_option, 2 %>
+            <%= f.label :address_option, 'new address', value: 2 %>
+          </div>
+          <table class='newitem'>
+            <tbody>
+              <tr>
+                <th>&emsp;Postal Code</th>
+                <th><%= f.text_field :postal_code, class:'form-control' %></th>
+              </tr>
+                <th>&emsp;Address</th>
+                <th><%= f.text_field :address, class:'form-control', size: '30' %></th>
+              </tr>
+              <tr>
+                <th>&emsp;Name</th>
+                <th><%= f.text_field :name, class:'form-control' %></th>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+    <div class='row center title-position'>
+      <%= f.submit 'Final confirm', class:'btn btn-lg btn-dark' %>
+    </div>
+  <% end %>
+</div>

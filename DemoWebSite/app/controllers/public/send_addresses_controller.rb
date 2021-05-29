@@ -15,6 +15,12 @@ class Public::SendAddressesController < ApplicationController
     end
   end
 
+  def destroy
+    @send_address = SendAddress.find(params[:id])
+    @send_address.destroy
+    redirect_to send_addresses_path
+  end
+
   def edit
   end
 

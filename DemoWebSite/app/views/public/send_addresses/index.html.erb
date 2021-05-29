@@ -43,7 +43,7 @@
             <th><%= send_address.address %></th>
             <th><%= send_address.name %></th>
             <th><%= link_to 'Edit', edit_send_address_path(send_address), class:'btn btn-sm btn-dark' %></th>
-            <th><%= link_to 'Destroy', send_address_path(send_address), method: :delete, class:'btn btn-sm btn-danger' %></th>
+            <th><%= link_to 'Destroy', send_address_path(send_address), method: :delete, data: {confirm: 'Are you sure?'},class:'btn btn-sm btn-danger' %></th>
           </tr>
         <% end %>
       </tbody>

@@ -3,8 +3,7 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @customer = current_customer
-    @send_address = @customer.send_address
-    @send_address_new = SendAddress.new
+    @send_addresses = @customer.send_addresses
   end
 
   def confirm
