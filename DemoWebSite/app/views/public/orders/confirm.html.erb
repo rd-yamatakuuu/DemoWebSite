@@ -1,0 +1,79 @@
+<div class='container'>
+  <div class='row'>
+    <div>
+      <h3>Final order-check</h3>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-10 offset-md-1'>
+      <table class='table bodydesign'>
+        <thead>
+          <tr>
+            <th class='text-white bg-dark'>Name</th>
+            <th class='text-white bg-dark'>Price(in_tax)</th>
+            <th class='text-white bg-dark'>Amount</th>
+            <th class='text-white bg-dark'>subtotal</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @cart_items.each do |cart_item| %>
+            <tr>
+              <th>
+                <%= attachment_image_tag(cart_item.item, :image, height: '80', fallback: 'no_image.jpg') %>
+                <%= cart_item.item.name %>
+              </th>
+              <th><%= tax_price(cart_item.item.price) %></th>
+              <th><%= cart_item.amount %></th>
+              <th><%= subtotal_price(cart_item.item.price, cart_item.amount) %></th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class='row'>
+    <div class='col-md-5'>
+      <h5>Payment Method</h5>
+      <div class='title-position'><%= @order.payment_method %></div>
+      <h5 class='title-position'>Send Address</h5>
+      <div class='title-position'>
+        <%= @order.postal_code %><br>
+        <%= @order.address %><br>
+        <%= @order.name %>
+      </div>
+    </div>
+    <div class='col-md-5 offset-md-2'>
+      <table class='table table-borderless'>
+        <tbody>
+          <tr>
+            <th>Shipping</th>
+            <th><%= @shipping_cost %> yen</th>
+          </tr>
+          <tr>
+            <th>Subtotal</th>
+            <th><%= total_price_no_shipping(@cart_items) %> yen</th>
+          </tr>
+          <tr>
+            <th>Total</th>
+            <th><%= @total_payment %> yen</th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div class='row center'>
+    <div>
+      <%= form_with model:@order, local: true do |f| %>
+        <%= f.hidden_field :postal_code, value:@order.postal_code %>
+        <%= f.hidden_field :address, value:@order.address %>
+        <%= f.hidden_field :name, value:@order.name %>
+        <%= f.hidden_field :shipping_cost, value:@shipping_cost %>
+        <%= f.hidden_field :total_payment, value:@total_payment %>
+        <%= f.hidden_field :payment_method, value:@order.payment_method %>
+        <%= f.submit "Order" ,class: "btn btn-lg btn-outline-dark" %>
+      <% end %>
+    </div>
+  </div>
+
+</div>
+

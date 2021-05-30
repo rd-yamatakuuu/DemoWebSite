@@ -4,7 +4,7 @@
       <h2>Order Information</h2>
     </div>
   </div>
-  <%= form_with model:@order, url:'comfirm_orders_path', local: true do |f| %>
+  <%= form_with model:@order, url: confirm_orders_path, local: true do |f| %>
     <div class='row'>
       <div class='col-md-3'>
         <h4>Payment Method</h4>
@@ -34,7 +34,7 @@
         <div class='title-position'>
           <%= f.radio_button :address_option, 1 %>
           <%= f.label :address_option, 'Select other address', value: 1 %><br>
-          &emsp;<%= f.select :send_address_id, @send_addresses.map { |send_address| [send_address.postal_code + ' ' + send_address.address + ' ' + send_address.name, send_address.id]}, {prompt: 'Select'} %>
+          &emsp;<%= f.select :other_send_address, @send_addresses.map { |send_address| [send_address.postal_code + ' ' + send_address.address + ' ' + send_address.name, send_address.id]}, {prompt: 'Select'}, class:'btn btn-outline-dark' %>
         </div>
         <div>
           <div class='title-position'>
