@@ -21,7 +21,7 @@ class Public::OrdersController < ApplicationController
         flash[:notice] = 'Please select address'
         redirect_back(fallback_location: root_path)
       else
-        @send_address_new = SendAddress.find([:order][:other_send_address])
+        @send_address_new = SendAddress.find(params[:order][:other_send_address])
         @order.postal_code = @send_address_new.postal_code
         @order.address = @send_address_new.address
         @order.name = @send_address_new.name
@@ -62,16 +62,21 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
+    @customer = current_customer
+    @orders = @customer.orders
   end
 
   def show
+    @shipping_cost = 800
+    @order = Order.find(params[:id])
+    @order_details = @order.order_details
   end
 
 
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :address, :name, :postal_code, :address_option, :other_send_address, :total_payment, :shopping_cost)
+    params.require(:order).permit(:payment_method, :address, :name, :postal_code, :address_option, :other_send_address, :total_payment, :shipping_cost)
   end
 
   def send_address_params

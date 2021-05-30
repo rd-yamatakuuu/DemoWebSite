@@ -22,6 +22,7 @@ class Public::SendAddressesController < ApplicationController
   end
 
   def edit
+    @send_address = SendAddress.find(params[:id])
   end
 
   private

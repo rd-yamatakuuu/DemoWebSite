@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   scope module: :public do
     resources :customers, only: [:index, :show, :edit, :update, :create]
     resources :items, only: [:index, :show]
-    resources :orders, only: [:index, :new, :create, :update, :destroy] do
+    resources :orders, only: [:index, :show, :new, :create, :update, :destroy] do
       collection do
         post 'confirm'
         get 'confirm'
