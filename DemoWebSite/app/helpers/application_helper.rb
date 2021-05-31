@@ -18,6 +18,14 @@ module ApplicationHelper
     @total_payment = tmp.sum.round(0) + @shipping_cost
     return tmp.sum.round(0)
   end
+  
+  def admin_total_price_no_shipping(item)
+      tmp = []
+      item.each do |order_detail|
+        tmp << order_detail.price * order_detail.amount * 1.10
+      end
+      return tmp.sum.round(0)
+  end
 
 
 end
