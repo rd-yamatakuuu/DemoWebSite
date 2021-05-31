@@ -17,9 +17,9 @@
           <li class='fas nav-link navitem'><%= link_to 'Shopping', cart_item_path(current_customer), class:'text-light underline', :style => 'text-decoration:none;' %></li>
           <li class='fas nav-link navitem'><%= link_to '', customer_path(current_customer), class:'text-light fas fa-user underline', :style => 'text-decoration:none;' %></li>
         <% else %>
-          <li class='fas nav-link navitem'><%= link_to 'Home', root_path, class:'text-light underline',:style => 'text-decoration:none;' %></li>
+          <li class='fas nav-link navitem'><%= link_to 'Cuostomer', admin_customers_path, class:'text-light underline',:style => 'text-decoration:none;' %></li>
           <li class='fas nav-link navitem'><%= link_to 'Painting', admin_items_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
-          <li class='fas nav-link navitem'><%= link_to 'About', home_about_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
+          <li class='fas nav-link navitem'><%= link_to 'Genre', admin_genres_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
           <li class='fas nav-link navitem'><%= link_to 'Order', admin_orders_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
           <li class='fas nav-link navitem'><%= link_to '', customers_path, class:'text-light fas fa-user underline', :style => 'text-decoration:none;' %></li>
         <% end %>

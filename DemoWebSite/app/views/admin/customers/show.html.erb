@@ -20,7 +20,7 @@
         </tr>
         <tr>
           <td><lebel>Kana</lebel></td>
-          <td><%= @customer.last_name_kana %><%= @customer.first_name_kana %></td>
+          <td><%= @customer.kana_last_name %><%= @customer.kana_first_name %></td>
         </tr>
         <tr>
           <td><lebel>Postal Code</lebel></td>
@@ -32,7 +32,7 @@
         </tr>
         <tr>
           <td><lebel>Phone Number</lebel></td>
-          <td><%= @customer.telephone_number %></td>
+          <td><%= @customer.telephone %></td>
         </tr>
         <tr>
           <td><lebel>email</lebel></td>
@@ -43,7 +43,7 @@
            <lebel>Status</lebel>
           </td>
           <td>
-            <% if @customer.id_deleted == true %>
+            <% if @customer.is_deleted == true %>
               退会
             <% else %>
               <font color="#008000">有効</font>
