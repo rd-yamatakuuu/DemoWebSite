@@ -24,6 +24,15 @@ class Public::SendAddressesController < ApplicationController
   def edit
     @send_address = SendAddress.find(params[:id])
   end
+  
+  def update
+    @send_address = SendAddress.find(params[:id])
+    if @send_address.update(send_address_params)
+      redirect_to send_addresses_path
+    else
+      render :edit
+    end
+  end
 
   private
 

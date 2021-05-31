@@ -17,3 +17,4 @@ end
 4.times do |n|
   Item.create!(name: "test#{n + 1}品目(Vinci)", introduction:"test!#{n + 1}品目", price:"#{n + 1}00", is_active: true, image: File.open("./app/assets/images/vinci_#{n + 1}.jpeg"), genre_id: 1)
 end
+

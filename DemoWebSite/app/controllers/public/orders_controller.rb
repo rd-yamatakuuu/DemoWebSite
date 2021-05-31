@@ -30,15 +30,15 @@ class Public::OrdersController < ApplicationController
       @order.postal_code = params[:order][:postal_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
-      @send_address = SendAddress.new(send_address_params)
+      @send_address = current_customer.send_addresses.new(send_address_params)
       @send_address.postal_code = params[:order][:postal_code]
       @send_address.address = params[:order][:address]
       @send_address.name = params[:order][:name]
-      if @send_address.save
+      if @send_address.save!
         flash[:notice] = 'Success to create new address'
       else
         flash[:notice] = 'Failed to create new address'
-        redirect_back(fallback_location :root_path)
+        redirect_back(fallback_location: root_path)
       end
     end
   end
@@ -80,6 +80,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def send_address_params
-    params.require(:send_address).permit(:postal_code, :address, :name)
+    params.permit(:postal_code, :address, :name)
   end
 end

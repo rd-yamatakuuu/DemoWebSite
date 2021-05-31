@@ -22,9 +22,9 @@
           <tr>
             <th>Stock</th>
             <% if @item.is_active == true %>
-              <th>available</th>
+              <th class='text-success'>available</th>
             <% else %>
-              <th>unavailable</th>
+              <th class='text-danger'>unavailable</th>
             <% end %>
           </tr>
         </tbody>
