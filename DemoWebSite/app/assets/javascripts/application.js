@@ -25,13 +25,7 @@
 
 // ドロップダウンメニュー
 $(function(){
-  $('.dropdown-btn').hover(
-  function() {
-    //カーソルが重なった時
-    $(this).children('.dropdown').addClass('open');
-  }, function() {
-    //カーソルが離れた時
-    $(this).children('.dropdown').removeClass('open');
+  $('#navi').children('li').hover(function(){
+    $(this).children('ul').stop().slideToggle(100);
   });
 });
- 

@@ -9,19 +9,30 @@
   <div class='container'>
     <div class='row mx-auto'>
       <div class='navbar-collapse collapse show'>
-        <ul class='navbar-nav'>
+        <ul class='navbar-nav center' id='navi'>
         <% if customer_signed_in? %>
           <li class='fas nav-link navitem'><%= link_to 'Home', root_path, class:'text-light underline',:style => 'text-decoration:none;' %></li>
           <li class='fas nav-link navitem'><%= link_to 'Painting', items_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
           <li class='fas nav-link navitem'><%= link_to 'About', home_about_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
           <li class='fas nav-link navitem'><%= link_to 'Shopping', cart_item_path(current_customer), class:'text-light underline', :style => 'text-decoration:none;' %></li>
           <li class='fas nav-link navitem'><%= link_to '', customer_path(current_customer), class:'text-light fas fa-user underline', :style => 'text-decoration:none;' %></li>
-        <% else %>
-          <li class='fas nav-link navitem'><%= link_to 'Cuostomer', admin_customers_path, class:'text-light underline',:style => 'text-decoration:none;' %></li>
+        <% elsif admin_signed_in? %>
+          <li class='fas nav-link navitem'><%= link_to 'Customer', admin_customers_path, class:'text-light underline',:style => 'text-decoration:none;' %></li>
           <li class='fas nav-link navitem'><%= link_to 'Painting', admin_items_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
           <li class='fas nav-link navitem'><%= link_to 'Genre', admin_genres_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
           <li class='fas nav-link navitem'><%= link_to 'Order', admin_orders_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
-          <li class='fas nav-link navitem'><%= link_to '', customers_path, class:'text-light fas fa-user underline', :style => 'text-decoration:none;' %></li>
+          <li class='fas nav-link navitem'><%= link_to 'Logout', destroy_admin_session_path, method: :delete, class:'text-light underline', :style => 'text-decoration:none;' %></li>
+        <% else %>
+          <li class='fas nav-link navitem'><%= link_to 'Home', root_path, class:'text-light underline',:style => 'text-decoration:none;' %></li>
+          <li class='fas nav-link navitem'><%= link_to 'Painting', items_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
+          <li class='fas nav-link navitem'><%= link_to 'About', home_about_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
+          <li class='fas nav-link navitem'><%= link_to 'Shopping', cart_items_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
+          <li class='fas nav-link navitem'><a class='text-light fas fa-user underline naveffect' href='#'></a>
+            <ul>
+              <li class='fas nav-link' href='#'><%= link_to 'Registration', new_customer_registration_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
+              <li class='fas nav-link' href='#'><%= link_to 'Login', new_customer_session_path, class:'text-light underline', :style => 'text-decoration:none;' %></li>
+            </ul>
+          </li>
         <% end %>
         </ul>
       </div>
